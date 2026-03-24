@@ -1,0 +1,18 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# model weights
+*.pth
+*.pt
+
+# virtual env
+env/
+venv/
+
+# mac files
+.DS_Store
+
+# logs
+*.log
