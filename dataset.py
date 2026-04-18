@@ -14,13 +14,13 @@ class ObjDetectionDataset(torch.utils.data.Dataset):
 
     def __getitem__(self, idx):
         row = self.df.iloc[idx]
-        img = Image.open(row["image_path"]).convert("RGB")
+        img = Image.open(row["images"]).convert("RGB")
         w, h = img.size
         image = to_tensor(img)
 
         boxes, labels = [], []
         # Opening the label file and converting YOLO format (xc, yc, bw, bh) to XYXY
-        with open(row["label_path"]) as f:
+        with open(row["labels"]) as f:
             for line in f:
                 cls, xc, yc, bw, bh = map(float, line.split())
                 x1 = (xc - bw/2) * w
