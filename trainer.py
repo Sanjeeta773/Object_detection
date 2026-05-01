@@ -42,7 +42,7 @@ def save_learning_curve(train_history, val_history): #function for plotting lear
         print("Graph saved automatically as learning_curve_automated.png")
 
 def train_model(model, train_loader, val_loader, device, args):
-    optimizer = optim.Adam(model.parameters(), lr=args.learning_rate)
+    optimizer = optim.SGD(model.parameters(), lr=args.learning_rate, momentum=0.9, weight_decay=0.0005)
     best_val_loss = float('inf')
     
     train_history =[]
